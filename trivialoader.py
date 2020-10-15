@@ -11,7 +11,7 @@ class TriviaLoader(commands.Cog):
   def __init__(self, bot):
     self.bot = bot
 
-  @commands.command(aliases=['zei'])
+  @commands.command(aliases=['zei', 'triviaup', 'triviaul'])
   @commands.guild_only()
   @checks.mod_or_permissions()
   async def triviaupload(self, ctx: commands.Context):
@@ -39,7 +39,7 @@ class TriviaLoader(commands.Cog):
     except Exception as e:
       await ctx.send (f"{type(e).__name__} - {e}")
 
-  @commands.command(aliases=['unzei'])
+  @commands.command(aliases=['unzei', 'triviadel', 'triviad'])
   @commands.guild_only()
   @checks.mod_or_permissions()
   async def triviadelete(self, ctx: commands.Context, trivia: str):
@@ -62,7 +62,7 @@ class TriviaLoader(commands.Cog):
       return
     await ctx.send ("Trivia `{}` removed.".format(trivia))
 
-  @commands.command(aliases=['downzei'])
+  @commands.command(aliases=['downzei''triviadown', 'triviadl'])
   @commands.guild_only()
   @checks.mod_or_permissions()
   async def triviadownload(self, ctx: commands.Context, trivia: str):
