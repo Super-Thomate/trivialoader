@@ -140,7 +140,6 @@ class TriviaLoader(commands.Cog):
       return
     trivias = os.listdir (info["list_path"])
     for trivia in trivias:
-      await ctx.send (trivia)
       try:
         file                   = os.path.splitext(trivia)[0]
         if not (file == "atla" or file == "tlok"):
