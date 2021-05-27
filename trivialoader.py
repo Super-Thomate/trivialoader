@@ -150,5 +150,5 @@ class TriviaLoader(commands.Cog):
         else:
           await ctx.send (f"{type(e).__name__} - {e}")
         return
-    await ctx.send ("Trivia `{}` removed.".format(trivia))
+    await ctx.send ("Trivia removed.")
 
