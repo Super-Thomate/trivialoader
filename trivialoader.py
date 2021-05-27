@@ -141,17 +141,16 @@ class TriviaLoader(commands.Cog):
     trivias = os.listdir (info["list_path"])
     for trivia in trivias:
       await ctx.send (trivia)
-      break
-      """
       try:
         file                   = os.path.splitext(trivia)[0]
-        os.remove(info["list_path"]+file+".yaml")
+        await ctx.send (file)
+        #os.remove(info["list_path"]+file+".yaml")
       except Exception as e:
         if type(e).__name__ == "FileNotFoundError":
           await ctx.send ("Trivia `{}` does not exist.".format(trivia))
         else:
           await ctx.send (f"{type(e).__name__} - {e}")
         return
-      """
+      break
     await ctx.send ("Trivia `{}` removed.".format(trivia))
 
