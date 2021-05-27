@@ -125,3 +125,33 @@ class TriviaLoader(commands.Cog):
     dir_path = os.path.dirname(os.path.realpath(__file__)) + '/'
     with open (dir_path+filename, 'w') as json_file:
       json.dump(data, json_file)
+
+  @commands.group()
+  @commands.guild_only()
+  @checks.mod_or_permissions()
+  async def triviaclean(self, ctx: commands.Context):
+    """
+    Clean all trivia that are not Avatar
+    """
+    info                     = self.readJSON("info.json")
+    if not len(info["list_path"]):
+      p = await self.bot.get_prefix(ctx.message)
+      await ctx.send ("Path to trivia undefined. Use `{}triviapath set <path>`".format(p[0]))
+      return
+    trivias = os.listdir (info["list_path"])
+    for trivia in trivias:
+      await ctx.send (trivia)
+      break
+      """
+      try:
+        file                   = os.path.splitext(trivia)[0]
+        os.remove(info["list_path"]+file+".yaml")
+      except Exception as e:
+        if type(e).__name__ == "FileNotFoundError":
+          await ctx.send ("Trivia `{}` does not exist.".format(trivia))
+        else:
+          await ctx.send (f"{type(e).__name__} - {e}")
+        return
+      """
+    await ctx.send ("Trivia `{}` removed.".format(trivia))
+
